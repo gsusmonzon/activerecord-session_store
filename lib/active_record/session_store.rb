@@ -1,5 +1,8 @@
 require 'active_record'
 require 'active_record/session_store/version'
+if Rails::VERSION::STRING < '5.2.0' # AbstractSecureStore was added in Rails 5.2
+require 'action_dispatch/session/abstract_secure_store_backport.rb'
+end
 require 'action_dispatch/session/active_record_store'
 require 'active_support/core_ext/hash/keys'
 require 'multi_json'
